@@ -11,7 +11,7 @@ void print_square(int size)
 	if (size <= 0)
 	{	_putchar(10);
 	}
-	else if (size == 2 || size == 10)
+	else
 	{
 	for (i = 0; i < size; i++)
 	{
