@@ -10,14 +10,15 @@
 
 
 void print_array(int *a, int n)
-{
-	for (int i = 0; i < n; i++)
+{	int i = 0;
+	while (i < n)
 	{
 	if (a[i] != -1024)
 	{	printf("%d, ", a[i]);
 	}
 	else
 	printf("%d", a[i]);
+	i++;
 	}
 	printf("\n");
 }
