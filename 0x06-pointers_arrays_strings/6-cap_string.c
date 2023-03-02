@@ -8,8 +8,11 @@
 
 char *cap_string(char *a)
 {	int i = 0;
-	while (a[i++])
-	{	while (a[i++] >= 'a' && a[i++] <= 'z')
+
+	while (a[i])
+
+	{
+	while (a[i++] >= 'a' && a[i++] <= 'z')
 	i++;
 	if (a[i - 1] == ' ' ||
 	a[i - 1] == '\t' ||
