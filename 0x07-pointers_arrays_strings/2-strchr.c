@@ -15,8 +15,10 @@ char *_strchr(char *s, char c)
 	{
 	return ((char *)s);
 	}
+	else
+	return (((void *)0));
 	s++;
 	}
-	return (((void *)0));
+	return (s);
 }
 
