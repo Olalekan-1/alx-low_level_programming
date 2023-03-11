@@ -9,26 +9,26 @@
 */
 
 int main(int argc, char *argv[])
-{	int i;
+{	int i, cents, cc, nc;
+	int coin[5] = {25, 10, 5, 2, 1};
 
 	if (argc != 2)
 	{
 	printf("Error\n");
 	return (1);
 	}
-	int cents = atoi(argv[1]);
+	cents = atoi(argv[1]);
 
 	if (cents < 0)
 	{
 	printf("0\n");
 	return (0);
 	}
-	int coin[5] = {25, 10, 5, 2, 1};
-	int nc = 0;
+	nc = 0;
 
 	for (i = 0; i < 5 && cents; i++)
 	{
-	int cc = cents / coin[i];
+	cc = cents / coin[i];
 
 	nc += cc;
 	cents -= cc * coin[i];
