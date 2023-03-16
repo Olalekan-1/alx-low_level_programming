@@ -36,7 +36,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (((void *)0));
 	}
 	j = 0;
-
 	while (k < total)
 	{
 		if (k <= i)
@@ -53,25 +52,4 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	concat[k] = '\0';
 	return (concat);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
