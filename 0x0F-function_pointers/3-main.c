@@ -1,100 +1,27 @@
+#include "3-calc.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "calc.h"
 
 /**
-* op_add - function to add two numbers
-* @a: the first number tobe added
-* @b: The second number to be added
-* Return: the addition of the two parameter
+* main - function to calculate using operator function
+* @argc: argument count
+* @argv: argument value
+* Return: 0 always success
 */
 
-int op_add(int a, int b)
-{
-	return (a + b);
-}
-
-/**
-* op_sub - Function to subtract two numbers
-* @a: The number to be substractd from
-* @b: The number to subtract
-* Return: the subtraction of the two number
-*/
-
-int op_sub(int a, int b)
-{
-	return (a - b);
-}
-
-/**
-* op_mul - Function to multiply two numbers
-* @a: number one to be multiply
-* @b: number to be multiply
-* Return: The multiplication the of the number
-*/
-
-int op_mul(int a, int b)
-{
-	return (a * b);
-}
-
-/**
-* op_div - Function to divide two number
-* @a: the dividend
-* @b: the divisor
-* Return: the division of the two number
-*/
-
-int op_div(int a, int b)
-{
-	if (b == 0)
+int main(int argc, char *argv[])
+{	int (*operation)(int, int);
+	if (argc != 4)
 	{
 		printf("Error\n");
-		exit(100);
+		exit(98);
 	}
-	else
-	return (a / b);
-}
-
-/**
-* op_mod - Function to find modulus
-* @a: The dividend
-* @b: The divisor
-* Return: The modulus of the operation
-*/
-
-int op_mod(int a, int b)
-{
-	if (b == 0)
+	operation = get_op_func(argv[2]);
+	if (!operation)
 	{
 		printf("Error\n");
-		exit(100);
+		exit(99);
 	}
-	else
-	return (a % b);
+	printf("%d\n", operation(atoi(argv[1]), atoi(argv[3])));
+	return (0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
