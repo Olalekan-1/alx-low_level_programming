@@ -27,7 +27,7 @@ void print_all(const char * const format, ...)
 			printf("%c", c_val);
 			break;
 			case 'i':
-			i_val = (int) va_arg(args, int);
+			i_val = va_arg(args, int);
 			printf("%d", i_val);
 			break;
 			case 'f':
@@ -38,7 +38,7 @@ void print_all(const char * const format, ...)
 			s_val = va_arg(args, char *);
 			if (s_val)
 			printf("%s", s_val);
-			else
+			while (!s_val)
 			printf("nil");
 			break;
 		}
