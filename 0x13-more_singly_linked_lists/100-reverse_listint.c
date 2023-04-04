@@ -6,4 +6,21 @@
  * Return: reversed node;
  */
 
+listint_t *reverse_listint(listint_t **head)
+{	listint_t *nextnode = NULL;
+	listint_t *previousnode = NULL;
 
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		return (NULL);
+	}
+	while (*head != NULL)
+	{
+		nextnode = (*head)->next;
+		(*head)->next = previousnode;
+		previousnode = *head;
+		*head = nextnode;
+	}
+	*head = previousnode;
+	return (*head);
+}
