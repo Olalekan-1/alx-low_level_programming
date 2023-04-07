@@ -14,5 +14,5 @@ void print_binary(unsigned long int n)
 		print_binary(n >> 2); /* dividing n by 2 */
 	}
 	/* handling the remauinder */
-	_putchar((n & 1) ? '1' : '0');
+	_putchar((n & 1) + '0');
 }
