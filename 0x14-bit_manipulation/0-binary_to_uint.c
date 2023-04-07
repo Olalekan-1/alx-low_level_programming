@@ -13,6 +13,10 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int len = 0;
 	unsigned int bitvalue = 1;
 
+	if (!b)
+	{
+		return (0);
+	}
 	while (b[len] != '\0')
 	{
 		len++;
