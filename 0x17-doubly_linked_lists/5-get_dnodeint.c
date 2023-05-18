@@ -16,15 +16,20 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 	{
 		return (NULL);
 	}
-
+	if (index == 0)
+		return (head);
 	i = 0;
 	temp = head;
 	/* traverse to the node to locate index */
-	while (i < index)
+	while (temp != NULL)
 	{
+		if (index == i)
+		{
+			return (temp);
+		}
 		temp = temp->next;
 		i++;
 	}
-	return (temp);
+	return (NULL);
 }
 
