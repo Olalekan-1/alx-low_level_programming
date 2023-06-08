@@ -8,23 +8,32 @@
  * Return: 1 if success else 0)
  */
 
-int add_node(hash_node_t **head, char *key, char *value)
+int add_node(hash_node_t **head, const char *key, const char *value)
 {
 	hash_node_t *new_node;
 
 	new_node = malloc(sizeof(hash_node_t));
 	if (new_node == NULL)
 		return (0);
-	if (key == NULL && strlen(key) <= 0)
+	if (key == NULL || strlen(key) == 0)
 		return (0);
-	new_node->key = key;
+	new_node->key = strdup(key);
+	if (new_node->key == NULL)
+	{
+		free(new_node);
+		return (0);
+	}
 	new_node->value = strdup(value);
 	if (new_node->value == NULL)
 	{
 		free(new_node);
 		return (0);
 	}
-	new_node->next = *head;
+	if (*head == NULL)
+		*head = new_node;
+	if (*head != NULL)
+		new_node->next = *head;
+
 	*head = new_node;
 	return (1);
 }
@@ -42,12 +51,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
 
-	if (ht == NULL || key == NULL || strlen(key) <= 0)
+	if (ht == NULL || key == NULL || strlen(key) == 0 || value == NULL)
 		return (0);
 
 	index = key_index((unsigned char *)key, ht->size);
 
-	if (add_node(&(ht->array[index]), (char *)key, (char *)value) == 0)
+	if (add_node(&(ht->array[index]), key, value) == 0)
 		return (0);
 
 	return (1);
