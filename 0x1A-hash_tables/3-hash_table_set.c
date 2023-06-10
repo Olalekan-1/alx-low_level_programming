@@ -29,14 +29,9 @@ int add_node(hash_node_t **head, const char *key, const char *value)
 		free(new_node);
 		return (0);
 	}
-	if (*head != NULL)
-	{
-		free((*head)->value);
-		free((*head)->key);
-		free(*head);
-	}
-
+	new_node->next = *head;
 	*head = new_node;
+
 	return (1);
 }
 
