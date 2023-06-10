@@ -30,7 +30,11 @@ int add_node(hash_node_t **head, const char *key, const char *value)
 		return (0);
 	}
 	if (*head != NULL)
-		new_node->next = *head;
+	{
+		free((*head)->value);
+		free((*head)->key);
+		free(*head);
+	}
 
 	*head = new_node;
 	return (1);
