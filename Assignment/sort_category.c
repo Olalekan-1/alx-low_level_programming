@@ -9,7 +9,7 @@
  * in the category
  */
 
-int sort_category(std_info **head, char program_type[5])
+int sort_category(std_info **head, char *program_type)
 {
 	std_info *temp;
 	int count = 0;

@@ -43,7 +43,7 @@ int count_category(std_info **head, char *program_type)
 std_info *update_std_record(std_info **head, char *program_type, int id)
 {
 	int count, i;
-	std_info *temp, *current, *updated_record;
+	std_info *temp, *current;
 	char *old_name;
 	char option[10];
 	char name_[22];
