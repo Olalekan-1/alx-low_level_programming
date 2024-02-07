@@ -1,34 +1,4 @@
 #include "main.h"
-/**
- * count_category - count by category the numbers in the records
- * @head: pointer to the head of the record
- * @program_type: the program type to count
- * Return: the number of count of category in the record
- *
- */
-
-int count_category(std_info **head, char *program_type)
-{
-	std_info *temp;
-
-	int count = 0;
-
-	if (*head == NULL)
-		return (0);
-
-	temp = *head;
-
-	while (temp != NULL)
-	{
-		if (strcmp(temp->program, program_type) == 0)
-		{
-			count++;
-		}
-		temp = temp->next;
-	}
-
-	return (count);
-}
 
 /**
  * update_std_record - updates the student record
@@ -95,7 +65,7 @@ std_info *update_std_record(std_info **head, char *program_type, int id)
 	}
 	else
 	{
-		printf("Invalid field selected, unable to update record");
+		printf("Invalid field selected, unable to update record\n");
 		return (NULL);
 	}
 
@@ -107,7 +77,8 @@ std_info *update_std_record(std_info **head, char *program_type, int id)
 			current = current->next;
 		}
 	}
-	// printf("%;
+
+	printf("update successful\n");
 
 	return (current);
 }
