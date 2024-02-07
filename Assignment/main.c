@@ -1,6 +1,12 @@
 #include "main.h"
 
 void clear_input_buffer(void);
+
+/**
+ * clear_input_buffer - clears standard input buffer
+ * Return: void
+ */
+
 void clear_input_buffer(void) {
     int c;
     while ((c = getchar()) != '\n' && c != EOF)
