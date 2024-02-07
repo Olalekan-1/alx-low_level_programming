@@ -53,6 +53,12 @@ std_info *update_std_record(std_info **head, char *program_type, int id)
 	std_info *program[count];
 	temp = *head;
 
+	if (*head == NULL)
+	{
+		printf("No record to update\n");
+		return (NULL);
+	}
+
 	i = 0;
 	while (temp != NULL)
 	{

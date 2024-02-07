@@ -13,6 +13,12 @@ int delete_record(std_info **head)
 
 	temp = *head;
 
+	if (*head == NULL)
+	{
+		printf("\nEmpty record\n");
+		return (99);
+	}
+
 	printf("Enter the student name you want to delete: ");
 	scanf(" %[^\n]", name);
 
@@ -36,8 +42,9 @@ int delete_record(std_info **head)
 		}
 		temp = temp->next;
 	}
-	printf("student record with the name %s not found, \
-			please enter correct name.\n\
-			kindly check record for correct name\n", name);
+	printf("\nstudent record with the name %s not found, "
+		"please enter correct name.\n"
+		"kindly check record for correct name\n", name);
+	putchar(10);
 	return (99);
 }

@@ -1,5 +1,11 @@
 #include "main.h"
 
+void clear_input_buffer(void);
+void clear_input_buffer(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+	    continue;
+}
 int display_actions(void);
 /**
  * display_actions - displays possible actions
@@ -8,20 +14,27 @@ int display_actions(void);
 
 int display_actions(void)
 {
-	int action, c;
-	char input[10];
-	printf("\nHELLO MANAGER!!!");
+	int action;
+	char input[10], choice;
+	printf("HELLO MANAGER!!!");
 	printf("\nWhat action would like to peform on the student record management system?");
-	printf("\n--------------------------------");
-	printf("\n--------------------------------");
-	printf("\npress 1 to add new record");
-	printf("\npress 2 to to show all records");
-	printf("\npress 3 to count number of record by program type");
-	printf("\npress 4 to sort record");
-	printf("\npress 5 to update record");
-	printf("\npress 6 to delete record");
-	printf("\npress 0 to exit\n");
-	printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+	printf("\nEnter 'V' or 'v' to view the available actions: ");
+	scanf("%c", &choice);
+	if (choice == 'V' || choice == 'v')
+	{
+		clear_input_buffer();
+		printf("\n--------------------------------");
+		printf("\n--------------------------------");
+		printf("\npress 1 to add new record");
+		printf("\npress 2 to to show all records");
+		printf("\npress 3 to count number of record by program type");
+		printf("\npress 4 to sort record");
+		printf("\npress 5 to update record");
+		printf("\npress 6 to delete record");
+		printf("\npress 0 to exit\n");
+		printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		//putchar(10);
+	}
 	putchar(10);
 	printf("choose an action: ");
 
@@ -29,12 +42,9 @@ int display_actions(void)
 
 	if (sscanf(input, "%d", &action) != 1)
 	 {
-		 while ((c = getchar()) != '\n' && c != EOF)
-			 continue;
-
+		clear_input_buffer();
 		 return (-1);
-	 }
-
+	}
 	return (action);
 }
 
@@ -49,7 +59,8 @@ int main(void)
 {
 	std_info *head;
 	int action, id;
-	char yes_no[3] = "",  program[3] = "";
+	char yes_no[3] = "";
+	char program[3] = "";
 	head = NULL;
 while (1)
 {
@@ -62,9 +73,10 @@ while (1)
 			do
 			{
 				add_record(&head);
-				printf("Do you want to add anothe student record (y/n):" );
+				printf("Do you want to add another student record (y/n): ");
 				scanf("%s", yes_no);
-			} while (strcmp(yes_no, "yes") == 0);
+                   		clear_input_buffer();
+			} while (strcmp(yes_no, "y") == 0 || strcmp(yes_no, "y") == 0);
 			break;
 		case 2:
 			show_all_record(&head);
@@ -78,9 +90,10 @@ while (1)
 				printf("Enter program to sort ((UG/PG/PT): ");
 				scanf("%s", program);
 				sort_category(&head, program);
-				printf("Do you want to sort another category (yes/no): ");
+				printf("Do you want to sort another category (y/n): ");
 				scanf("%s", yes_no);
-			} while (strcmp(yes_no, "yes") == 0);
+                    		clear_input_buffer();
+			} while (strcmp(yes_no, "y") == 0 || strcmp(yes_no, "y") == 0);
 			break;
 		case 5:
 			do
@@ -91,14 +104,16 @@ while (1)
 				printf("Enter Id to update (s/n): ");
 				scanf("%d", &id);
 				update_std_record(&head, program, id);
-				printf("do you want to update another record (yes/no): ");
+				printf("do you want to update another record (y/n): ");
 				scanf("%s", yes_no);
-			} while (strcmp(yes_no, "yes") == 0);
+                   		 clear_input_buffer();
+			} while (strcmp(yes_no, "y") == 0 || strcmp(yes_no, "y") == 0);
 			break;
 		case 6:
 			delete_record(&head);
 			break;
 		case 0:
+			printf("\nExiting program ...\n");
 			return (0);
 			break;
 		default:
