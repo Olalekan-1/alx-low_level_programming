@@ -11,6 +11,9 @@ int show_all_record(std_info **head)
 	int count = 0;
 
 	if (*head == NULL)
+	{
+		printf("Empty record\n");
+	}
 		return (0);
 
 	temp = *head;

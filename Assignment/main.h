@@ -19,5 +19,6 @@ std_info *update_std_record(std_info **head, char *program_type, int id);
 int count_category(std_info **head, char *program_type);
 size_t print_listint(std_info **h);
 int show_all_record(std_info **head);
+void clear_input_buffer(void);
 
 #endif 

@@ -78,7 +78,8 @@ std_info *update_std_record(std_info **head, char *program_type, int id)
 	if (strcmp(option, "name") == 0)
 	{
 		printf("Enter the new name:  ");
-		scanf("%s", name_);
+		//scanf("%s", name_);
+		scanf(" %[^\n]", name_);
 		strcpy(program[id - 1]->name, name_);
 	}
 	else if (strcmp(option, "age") == 0)
